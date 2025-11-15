@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey and Feedback Form</title>
+  <style>
+    /* --- Basic Page Styling --- */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #f8f9fa);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    /* --- Form Container --- */
+    .form-container {
+      background-color: #ffffff;
+      margin: 40px 0;
+      padding: 25px 40px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #bbdefb;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --- Form Header --- */
+    h1 {
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    /* --- Form Groups --- */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fafafa;
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #1976d2;
+      transform: scale(1.02);
+      outline: none;
+    }
+
+    /* --- Gender and Rating Inputs --- */
+    .inline-group {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .inline-group label {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    /* --- Rating Section --- */
+    .rating {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px 0;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      font-size: 24px;
+      color: #ccc;
+      cursor: pointer;
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: #ffca28;
+      transform: scale(1.2);
+    }
+
+    input:checked + label {
+      color: #fbc02d;
+    }
+
+    /* --- Submit Button --- */
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #1976d2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+      transform: translateY(-3px);
+    }
+
+    /* --- Feedback Area --- */
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    /* --- Footer Text --- */
+    .footer-text {
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      font-size: 13px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form class="form-container">
+    <h1>Survey & Feedback Form</h1>
+    
+
+    <!-- User Information Section -->
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="10" max="100" placeholder="Enter your age" required>
+    </div>
+
+    <div class="form-group">
+      <label>Gender:</label>
+      <div class="inline-group">
+        <label><input type="radio" name="gender" value="male"> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+        <label><input type="radio" name="gender" value="other"> Other</label>
+      </div>
+    </div>
+
+    <!-- Rating Section -->
+    <div class="form-group">
+      <label>How would you rate your experience?</label>
+      <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">★</label>
+      </div>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="form-group">
+      <label for="feedback">Your Feedback:</label>
+      <textarea id="feedback" name="feedback" placeholder="Write your feedback here..."></textarea>
+    </div>
+
+    <!-- Experience Dropdown -->
+    <div class="form-group">
+      <label for="experience">Overall Experience:</label>
+      <select id="experience" name="experience">
+        <option value="">-- Select --</option>
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="average">Average</option>
+        <option value="poor">Poor</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit Feedback</button>
+
+    <div class="footer-text">
+      © 2025 | 25/A01/018 | Web Designing Lab
+    </div>
+  </form>
+
+</body>
+</html>
